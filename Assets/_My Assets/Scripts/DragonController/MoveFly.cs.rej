@@ -1,0 +1,17 @@
+--- Assets/_My Assets/Scripts/DragonController/MoveFly.cs	
++++ Assets/_My Assets/Scripts/DragonController/MoveFly.cs	
+@@ -132,6 +132,14 @@
+ 
+     protected override void InputMovement()
+     {
++        // first we have to get the input pitch angle and see if it's below 
++
++        Vector3 windResist = -G.rigid.velocity * G.f_windResistance;
++        DoWorkByForce(windResist + G.v3_grav);
++
++        f_flyVel = Mathf.Sqrt(2 * f_energyCurrent);
++
++        //f_flyVel = Mathf.Min(f_flyVel, G.f_maxFlySpeed);
+         v3_leftVec = Vector3.Normalize(Vector3.Cross(-Vector3.up, G.rigid.velocity));
+         v3_forwardVec = Vector3.Normalize(Vector3.ProjectOnPlane(G.rigid.velocity, Vector3.up));
+         float velocityAngle = Vector3.SignedAngle(v3_forwardVec, G.rigid.velocity, v3_leftVec);

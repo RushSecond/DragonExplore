@@ -1,0 +1,844 @@
+fileFormatVersion: 2
+guid: 28f389d462c3dae42b7a4cddb317f9b3
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: BigTooth001
+    100002: BigTooth002
+    100004: BigTooth003
+    100006: BoLeft
+    100008: BoLeft01
+    100010: BoLeft02
+    100012: BoLeft03
+    100014: BoLeft04
+    100016: BoLeft05
+    100018: Bone002
+    100020: Bone003
+    100022: Bone004
+    100024: Bone005
+    100026: Bone006
+    100028: Bone007
+    100030: BoneArmConnectLeft
+    100032: BoneArmConnectRight
+    100034: BoneArmFingerLower002
+    100036: BoneArmFingerLower002Left
+    100038: BoneArmFingerLower003
+    100040: BoneArmFingerLower003Left
+    100042: BoneArmFingerLower004
+    100044: BoneArmFingerLower004Left
+    100046: BoneArmFingerLower005
+    100048: BoneArmFingerLower005Left
+    100050: BoneArmFingerLower01
+    100052: BoneArmFingerLower01Left
+    100054: BoneArmFingerUpper003
+    100056: BoneArmFingerUpper003Left
+    100058: BoneArmFingerUpper004
+    100060: BoneArmFingerUpper004Left
+    100062: BoneArmFingerUpper005
+    100064: BoneArmFingerUpper005Left
+    100066: BoneArmFingerUpper01
+    100068: BoneArmFingerUpper01Left
+    100070: BoneArmFingerUpper02
+    100072: BoneArmFingerUpper02Left
+    100074: BoneArmLowerLeft
+    100076: BoneArmLowerRight
+    100078: BoneArmUpperLeft
+    100080: BoneArmUpperRight
+    100082: BoneDewToeLeft
+    100084: BoneDewToeRight
+    100086: BoneFootKnucklesLeft
+    100088: BoneFootKnucklesRight
+    100090: BoneFootLeft
+    100092: BoneFootRight
+    100094: BoneHandLeft
+    100096: BoneHandRight
+    100098: BoneHeadJaw
+    100100: BoneHeadJawConnect
+    100102: BoneHeadJawNub
+    100104: BoneHeadUpper
+    100106: BoneHeadUpperNub
+    100108: BoneLowerLegLeft
+    100110: BoneLowerLegRight
+    100112: BoneNeck01
+    100114: BoneNeck02
+    100116: BoneNeck03
+    100118: BoneNeck04
+    100120: BoneNeck05
+    100122: BonePelvisLeft
+    100124: BonePelvisRight
+    100126: BoneRoot
+    100128: BoneSpine01
+    100130: BoneSpine02
+    100132: BoneSpine03
+    100134: BoneSpine04
+    100136: BoneSpine05
+    100138: BoneSpine06
+    100140: BoneTail01
+    100142: BoneTail02
+    100144: BoneTail03
+    100146: BoneTail04
+    100148: BoneTail05
+    100150: BoneTail06
+    100152: BoneTail07
+    100154: BoneTail08
+    100156: BoneTail09
+    100158: BoneTail10
+    100160: BoneTail11
+    100162: BoneTail12
+    100164: BoneTail13
+    100166: BoneTail14
+    100168: BoneToe003
+    100170: BoneToe004
+    100172: BoneToe01
+    100174: BoneToe02
+    100176: BoneToeLeft01
+    100178: BoneToeLeft02
+    100180: BoneToeLeft03
+    100182: BoneToeLeft04
+    100184: BoneTongue1
+    100186: BoneTongue2
+    100188: BoneTongueNub
+    100190: BoneUpperLegLeft
+    100192: BoneUpperLegRight
+    100194: BoneWingConnectLeft
+    100196: BoneWingConnectRight
+    100198: BoneWingEndLeft001
+    100200: BoneWingEndLeft002
+    100202: BoneWingEndLeft003
+    100204: BoneWingEndRight001
+    100206: BoneWingEndRight002
+    100208: BoneWingEndRight003
+    100210: BoneWingLowerLeft
+    100212: BoneWingLowerRight
+    100214: BoneWingNubLeft
+    100216: BoneWingNubLeft001
+    100218: BoneWingNubLeft002
+    100220: BoneWingNubRight
+    100222: BoneWingNubRight001
+    100224: BoneWingNubRight002
+    100226: BoneWingUpperLeft
+    100228: BoneWingUpperRight
+    100230: Claw001
+    100232: Claw002
+    100234: Claw003
+    100236: Claw004
+    100238: Claw005
+    100240: Claw006
+    100242: Claw007
+    100244: Claw008
+    100246: Claw009
+    100248: Claw010
+    100250: Claw011
+    100252: Claw012
+    100254: Claw013
+    100256: Claw014
+    100258: Eye
+    100260: EyeBrow
+    100262: Face Spike002
+    100264: Face Spike008
+    100266: Face Spike014
+    100268: Face Spike015
+    100270: Face Spike020
+    100272: Face Spike021
+    100274: Face Spike022
+    100276: Face Spike023
+    100278: Face Spike024
+    100280: Face Spike025
+    100282: Face Spike026
+    100284: Face Spike027
+    100286: Face Spike028
+    100288: Face Spike029
+    100290: Face Spike030
+    100292: Face Spike031
+    100294: Face Spike032
+    100296: Face Spike034
+    100298: Face Spike035
+    100300: Face Spike036
+    100302: Face Spike037
+    100304: Face Spike038
+    100306: Face Spike039
+    100308: Face Spike040
+    100310: Face Spike041
+    100312: Face Spike042
+    100314: Face Spike043
+    100316: Face Spike044
+    100318: Face Spike045
+    100320: Face Spike047
+    100322: Face Spike048
+    100324: Face Spike049
+    100326: Face Spike050
+    100328: Face Spike051
+    100330: Face Spike052
+    100332: Face Spike053
+    100334: Face Spike054
+    100336: Face Spike055
+    100338: FeetFlex
+    100340: FingerJoint001
+    100342: FingerJoint002
+    100344: FingerJoint003
+    100346: FingerJoint004
+    100348: FingerJoint005
+    100350: FingerJoint006
+    100352: FingerJoint007
+    100354: FingerJoint008
+    100356: FingerJoint009
+    100358: FingerJoint010
+    100360: FingerJoint020
+    100362: FingerJoint021
+    100364: FingerJoint022
+    100366: FingerJoint023
+    100368: Foot
+    100370: FootNub
+    100372: Hand
+    100374: Horn
+    100376: LowerArm
+    100378: LowerHead
+    100380: LowerLeg
+    100382: //RootNode
+    100384: MouthThing
+    100386: Neck Spike001
+    100388: Neck Spike002
+    100390: Neck Spike003
+    100392: Neck Spike004
+    100394: Neck Spike005
+    100396: Neck Spike006
+    100398: Neck Spike007
+    100400: Neck Spike008
+    100402: Neck Spike009
+    100404: Neck Spike010
+    100406: Neck Spike011
+    100408: Neck Spike012
+    100410: Neck Spike013
+    100412: Neck Spike014
+    100414: Neck Spike015
+    100416: Neck Spike016
+    100418: Neck Spike017
+    100420: Root
+    100422: SideHorn
+    100424: Tailfin
+    100426: Tongue
+    100428: Tooth002
+    100430: Tooth003
+    100432: Tooth004
+    100434: Tooth005
+    100436: Tooth006
+    100438: Tooth007
+    100440: Tooth009
+    100442: Tooth011
+    100444: Tooth012
+    100446: Tooth013
+    100448: Tooth014
+    100450: Tooth015
+    100452: ToothRef001
+    100454: ToothRef002
+    100456: ToothRef003
+    100458: ToothTopFront02
+    100460: TorsoNeckTail
+    100462: UpperArm
+    100464: UpperHead
+    100466: UpperLeg
+    100468: WingLower
+    100470: WingMembrane
+    100472: WingTips
+    100474: WingUpper
+    400000: BigTooth001
+    400002: BigTooth002
+    400004: BigTooth003
+    400006: BoLeft
+    400008: BoLeft01
+    400010: BoLeft02
+    400012: BoLeft03
+    400014: BoLeft04
+    400016: BoLeft05
+    400018: Bone002
+    400020: Bone003
+    400022: Bone004
+    400024: Bone005
+    400026: Bone006
+    400028: Bone007
+    400030: BoneArmConnectLeft
+    400032: BoneArmConnectRight
+    400034: BoneArmFingerLower002
+    400036: BoneArmFingerLower002Left
+    400038: BoneArmFingerLower003
+    400040: BoneArmFingerLower003Left
+    400042: BoneArmFingerLower004
+    400044: BoneArmFingerLower004Left
+    400046: BoneArmFingerLower005
+    400048: BoneArmFingerLower005Left
+    400050: BoneArmFingerLower01
+    400052: BoneArmFingerLower01Left
+    400054: BoneArmFingerUpper003
+    400056: BoneArmFingerUpper003Left
+    400058: BoneArmFingerUpper004
+    400060: BoneArmFingerUpper004Left
+    400062: BoneArmFingerUpper005
+    400064: BoneArmFingerUpper005Left
+    400066: BoneArmFingerUpper01
+    400068: BoneArmFingerUpper01Left
+    400070: BoneArmFingerUpper02
+    400072: BoneArmFingerUpper02Left
+    400074: BoneArmLowerLeft
+    400076: BoneArmLowerRight
+    400078: BoneArmUpperLeft
+    400080: BoneArmUpperRight
+    400082: BoneDewToeLeft
+    400084: BoneDewToeRight
+    400086: BoneFootKnucklesLeft
+    400088: BoneFootKnucklesRight
+    400090: BoneFootLeft
+    400092: BoneFootRight
+    400094: BoneHandLeft
+    400096: BoneHandRight
+    400098: BoneHeadJaw
+    400100: BoneHeadJawConnect
+    400102: BoneHeadJawNub
+    400104: BoneHeadUpper
+    400106: BoneHeadUpperNub
+    400108: BoneLowerLegLeft
+    400110: BoneLowerLegRight
+    400112: BoneNeck01
+    400114: BoneNeck02
+    400116: BoneNeck03
+    400118: BoneNeck04
+    400120: BoneNeck05
+    400122: BonePelvisLeft
+    400124: BonePelvisRight
+    400126: BoneRoot
+    400128: BoneSpine01
+    400130: BoneSpine02
+    400132: BoneSpine03
+    400134: BoneSpine04
+    400136: BoneSpine05
+    400138: BoneSpine06
+    400140: BoneTail01
+    400142: BoneTail02
+    400144: BoneTail03
+    400146: BoneTail04
+    400148: BoneTail05
+    400150: BoneTail06
+    400152: BoneTail07
+    400154: BoneTail08
+    400156: BoneTail09
+    400158: BoneTail10
+    400160: BoneTail11
+    400162: BoneTail12
+    400164: BoneTail13
+    400166: BoneTail14
+    400168: BoneToe003
+    400170: BoneToe004
+    400172: BoneToe01
+    400174: BoneToe02
+    400176: BoneToeLeft01
+    400178: BoneToeLeft02
+    400180: BoneToeLeft03
+    400182: BoneToeLeft04
+    400184: BoneTongue1
+    400186: BoneTongue2
+    400188: BoneTongueNub
+    400190: BoneUpperLegLeft
+    400192: BoneUpperLegRight
+    400194: BoneWingConnectLeft
+    400196: BoneWingConnectRight
+    400198: BoneWingEndLeft001
+    400200: BoneWingEndLeft002
+    400202: BoneWingEndLeft003
+    400204: BoneWingEndRight001
+    400206: BoneWingEndRight002
+    400208: BoneWingEndRight003
+    400210: BoneWingLowerLeft
+    400212: BoneWingLowerRight
+    400214: BoneWingNubLeft
+    400216: BoneWingNubLeft001
+    400218: BoneWingNubLeft002
+    400220: BoneWingNubRight
+    400222: BoneWingNubRight001
+    400224: BoneWingNubRight002
+    400226: BoneWingUpperLeft
+    400228: BoneWingUpperRight
+    400230: Claw001
+    400232: Claw002
+    400234: Claw003
+    400236: Claw004
+    400238: Claw005
+    400240: Claw006
+    400242: Claw007
+    400244: Claw008
+    400246: Claw009
+    400248: Claw010
+    400250: Claw011
+    400252: Claw012
+    400254: Claw013
+    400256: Claw014
+    400258: Eye
+    400260: EyeBrow
+    400262: Face Spike002
+    400264: Face Spike008
+    400266: Face Spike014
+    400268: Face Spike015
+    400270: Face Spike020
+    400272: Face Spike021
+    400274: Face Spike022
+    400276: Face Spike023
+    400278: Face Spike024
+    400280: Face Spike025
+    400282: Face Spike026
+    400284: Face Spike027
+    400286: Face Spike028
+    400288: Face Spike029
+    400290: Face Spike030
+    400292: Face Spike031
+    400294: Face Spike032
+    400296: Face Spike034
+    400298: Face Spike035
+    400300: Face Spike036
+    400302: Face Spike037
+    400304: Face Spike038
+    400306: Face Spike039
+    400308: Face Spike040
+    400310: Face Spike041
+    400312: Face Spike042
+    400314: Face Spike043
+    400316: Face Spike044
+    400318: Face Spike045
+    400320: Face Spike047
+    400322: Face Spike048
+    400324: Face Spike049
+    400326: Face Spike050
+    400328: Face Spike051
+    400330: Face Spike052
+    400332: Face Spike053
+    400334: Face Spike054
+    400336: Face Spike055
+    400338: FeetFlex
+    400340: FingerJoint001
+    400342: FingerJoint002
+    400344: FingerJoint003
+    400346: FingerJoint004
+    400348: FingerJoint005
+    400350: FingerJoint006
+    400352: FingerJoint007
+    400354: FingerJoint008
+    400356: FingerJoint009
+    400358: FingerJoint010
+    400360: FingerJoint020
+    400362: FingerJoint021
+    400364: FingerJoint022
+    400366: FingerJoint023
+    400368: Foot
+    400370: FootNub
+    400372: Hand
+    400374: Horn
+    400376: LowerArm
+    400378: LowerHead
+    400380: LowerLeg
+    400382: //RootNode
+    400384: MouthThing
+    400386: Neck Spike001
+    400388: Neck Spike002
+    400390: Neck Spike003
+    400392: Neck Spike004
+    400394: Neck Spike005
+    400396: Neck Spike006
+    400398: Neck Spike007
+    400400: Neck Spike008
+    400402: Neck Spike009
+    400404: Neck Spike010
+    400406: Neck Spike011
+    400408: Neck Spike012
+    400410: Neck Spike013
+    400412: Neck Spike014
+    400414: Neck Spike015
+    400416: Neck Spike016
+    400418: Neck Spike017
+    400420: Root
+    400422: SideHorn
+    400424: Tailfin
+    400426: Tongue
+    400428: Tooth002
+    400430: Tooth003
+    400432: Tooth004
+    400434: Tooth005
+    400436: Tooth006
+    400438: Tooth007
+    400440: Tooth009
+    400442: Tooth011
+    400444: Tooth012
+    400446: Tooth013
+    400448: Tooth014
+    400450: Tooth015
+    400452: ToothRef001
+    400454: ToothRef002
+    400456: ToothRef003
+    400458: ToothTopFront02
+    400460: TorsoNeckTail
+    400462: UpperArm
+    400464: UpperHead
+    400466: UpperLeg
+    400468: WingLower
+    400470: WingMembrane
+    400472: WingTips
+    400474: WingUpper
+    2100000: Soft
+    2100002: Body
+    2100004: No Name
+    2100006: Tailfin + Wings
+    2100008: Horns and Claws
+    2100010: 'Material #23282'
+    2100012: 'Material #23335'
+    2100014: Tongue n Gums
+    2100016: Head
+    2100018: Teeth n Claws
+    2300000: Claw011
+    2300002: Claw012
+    2300004: Claw013
+    2300006: Claw014
+    2300008: WingLower
+    2300010: WingMembrane
+    2300012: WingTips
+    2300014: WingUpper
+    3300000: Claw011
+    3300002: Claw012
+    3300004: Claw013
+    3300006: Claw014
+    3300008: WingLower
+    3300010: WingMembrane
+    3300012: WingTips
+    3300014: WingUpper
+    4300000: TorsoNeckTail
+    4300002: UpperLeg
+    4300004: UpperArm
+    4300006: WingUpper
+    4300008: LowerArm
+    4300010: WingMembrane
+    4300012: WingLower
+    4300014: LowerLeg
+    4300016: Foot
+    4300018: Hand
+    4300020: WingTips
+    4300022: FingerJoint002
+    4300024: FootNub
+    4300026: FeetFlex
+    4300028: FingerJoint001
+    4300030: FingerJoint003
+    4300032: FingerJoint005
+    4300034: FingerJoint004
+    4300036: FingerJoint009
+    4300038: FingerJoint007
+    4300040: FingerJoint023
+    4300042: FingerJoint022
+    4300044: FingerJoint008
+    4300046: FingerJoint010
+    4300048: FingerJoint021
+    4300050: FingerJoint020
+    4300052: FingerJoint006
+    4300054: Claw007
+    4300056: Eye
+    4300058: Claw008
+    4300060: Claw013
+    4300062: Claw009
+    4300064: Claw011
+    4300066: Claw005
+    4300068: LowerHead
+    4300070: Claw001
+    4300072: Claw004
+    4300074: Claw006
+    4300076: MouthThing
+    4300078: UpperHead
+    4300080: Claw012
+    4300082: Claw002
+    4300084: Claw010
+    4300086: Tongue
+    4300088: Horn
+    4300090: SideHorn
+    4300092: Neck Spike004
+    4300094: Neck Spike008
+    4300096: Neck Spike009
+    4300098: Neck Spike010
+    4300100: Neck Spike011
+    4300102: Neck Spike012
+    4300104: Neck Spike013
+    4300106: Neck Spike014
+    4300108: Neck Spike015
+    4300110: Tailfin
+    4300112: Face Spike054
+    4300114: Face Spike053
+    4300116: Face Spike052
+    4300118: Face Spike051
+    4300120: Face Spike048
+    4300122: Face Spike002
+    4300124: Face Spike047
+    4300126: Face Spike044
+    4300128: Face Spike037
+    4300130: Face Spike036
+    4300132: Face Spike035
+    4300134: Face Spike020
+    4300136: Face Spike021
+    4300138: Face Spike015
+    4300140: Face Spike045
+    4300142: Face Spike055
+    4300144: Face Spike041
+    4300146: Face Spike040
+    4300148: Face Spike042
+    4300150: Face Spike024
+    4300152: Face Spike022
+    4300154: Face Spike014
+    4300156: Face Spike008
+    4300158: Face Spike023
+    4300160: Face Spike043
+    4300162: Face Spike050
+    4300164: Face Spike049
+    4300166: Face Spike038
+    4300168: Face Spike039
+    4300170: Face Spike034
+    4300172: Face Spike029
+    4300174: Face Spike030
+    4300176: Face Spike031
+    4300178: Face Spike032
+    4300180: Face Spike025
+    4300182: Face Spike026
+    4300184: Face Spike027
+    4300186: Face Spike028
+    4300188: Neck Spike016
+    4300190: Neck Spike005
+    4300192: Neck Spike001
+    4300194: Neck Spike006
+    4300196: Neck Spike002
+    4300198: Neck Spike007
+    4300200: Neck Spike003
+    4300202: Tooth002
+    4300204: Tooth003
+    4300206: Tooth004
+    4300208: Tooth005
+    4300210: Tooth006
+    4300212: Tooth007
+    4300214: Tooth009
+    4300216: Tooth011
+    4300218: Tooth012
+    4300220: Tooth013
+    4300222: ToothTopFront02
+    4300224: ToothRef002
+    4300226: ToothRef003
+    4300228: ToothRef001
+    4300230: Tooth014
+    4300232: Tooth015
+    4300234: BigTooth001
+    4300236: BigTooth002
+    4300238: BigTooth003
+    4300240: Neck Spike017
+    4300242: EyeBrow
+    4300244: Claw014
+    4300246: Claw003
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: BigTooth001
+    13700002: BigTooth002
+    13700004: BigTooth003
+    13700006: Claw001
+    13700008: Claw002
+    13700010: Claw003
+    13700012: Claw004
+    13700014: Claw005
+    13700016: Claw006
+    13700018: Claw007
+    13700020: Claw008
+    13700022: Claw009
+    13700024: Claw010
+    13700026: Claw011
+    13700028: Claw012
+    13700030: Claw013
+    13700032: Claw014
+    13700034: Eye
+    13700036: EyeBrow
+    13700038: Face Spike002
+    13700040: Face Spike008
+    13700042: Face Spike014
+    13700044: Face Spike015
+    13700046: Face Spike020
+    13700048: Face Spike021
+    13700050: Face Spike022
+    13700052: Face Spike023
+    13700054: Face Spike024
+    13700056: Face Spike025
+    13700058: Face Spike026
+    13700060: Face Spike027
+    13700062: Face Spike028
+    13700064: Face Spike029
+    13700066: Face Spike030
+    13700068: Face Spike031
+    13700070: Face Spike032
+    13700072: Face Spike034
+    13700074: Face Spike035
+    13700076: Face Spike036
+    13700078: Face Spike037
+    13700080: Face Spike038
+    13700082: Face Spike039
+    13700084: Face Spike040
+    13700086: Face Spike041
+    13700088: Face Spike042
+    13700090: Face Spike043
+    13700092: Face Spike044
+    13700094: Face Spike045
+    13700096: Face Spike047
+    13700098: Face Spike048
+    13700100: Face Spike049
+    13700102: Face Spike050
+    13700104: Face Spike051
+    13700106: Face Spike052
+    13700108: Face Spike053
+    13700110: Face Spike054
+    13700112: Face Spike055
+    13700114: FeetFlex
+    13700116: FingerJoint001
+    13700118: FingerJoint002
+    13700120: FingerJoint003
+    13700122: FingerJoint004
+    13700124: FingerJoint005
+    13700126: FingerJoint006
+    13700128: FingerJoint007
+    13700130: FingerJoint008
+    13700132: FingerJoint009
+    13700134: FingerJoint010
+    13700136: FingerJoint020
+    13700138: FingerJoint021
+    13700140: FingerJoint022
+    13700142: FingerJoint023
+    13700144: Foot
+    13700146: FootNub
+    13700148: Hand
+    13700150: Horn
+    13700152: LowerArm
+    13700154: LowerHead
+    13700156: LowerLeg
+    13700158: MouthThing
+    13700160: Neck Spike001
+    13700162: Neck Spike002
+    13700164: Neck Spike003
+    13700166: Neck Spike004
+    13700168: Neck Spike005
+    13700170: Neck Spike006
+    13700172: Neck Spike007
+    13700174: Neck Spike008
+    13700176: Neck Spike009
+    13700178: Neck Spike010
+    13700180: Neck Spike011
+    13700182: Neck Spike012
+    13700184: Neck Spike013
+    13700186: Neck Spike014
+    13700188: Neck Spike015
+    13700190: Neck Spike016
+    13700192: Neck Spike017
+    13700194: SideHorn
+    13700196: Tailfin
+    13700198: Tongue
+    13700200: Tooth002
+    13700202: Tooth003
+    13700204: Tooth004
+    13700206: Tooth005
+    13700208: Tooth006
+    13700210: Tooth007
+    13700212: Tooth009
+    13700214: Tooth011
+    13700216: Tooth012
+    13700218: Tooth013
+    13700220: Tooth014
+    13700222: Tooth015
+    13700224: ToothRef001
+    13700226: ToothRef002
+    13700228: ToothRef003
+    13700230: ToothTopFront02
+    13700232: TorsoNeckTail
+    13700234: UpperArm
+    13700236: UpperHead
+    13700238: UpperLeg
+    13700240: WingLower
+    13700242: WingMembrane
+    13700244: WingTips
+    13700246: WingUpper
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 0
+    keepQuads: 1
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.0254
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 11
+    normalImportMode: 1
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 2
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: BoneRoot
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

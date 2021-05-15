@@ -1,0 +1,316 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEditor;
+using UnityEngine.Serialization;
+
+public class RealicTerrain : ChunkManager
+{
+#if (UNITY_EDITOR)
+    [CustomEditor(typeof(RealicTerrain))]
+    public class TerrainBuilderEditor : Editor
+    {
+        public override void OnInspectorGUI()
+        {
+            DrawDefaultInspector();
+
+            RealicTerrain myScript = (RealicTerrain)target;
+
+            if (GUILayout.Button("Redraw Terrain"))
+            {
+                myScript.RedrawTerrain();
+            }
+        }
+    }
+#endif
+
+    /*[Tooltip("How many tiles wide (x) the terrain is")]
+    public int f_Width;
+    [Tooltip("How many tiles long (z) the terrain is")]
+    public int f_Length;*/
+    public float f_SourceTileSize = 10f;
+
+    [Header("1st pass")]
+    public bool b_do1stPass = true;
+    public float f_1stPassHeight = 20f;
+    public float f_1stPassRange = 200f;
+
+    [Header("2nd pass")]
+    public bool b_do2ndPass = true;
+    public float f_2ndPassHeight = 50f;
+    public float f_2ndPassFloor = 20f;
+    public float f_2ndPassRange = 100f;
+
+    [Header("3rd pass")]
+    public bool b_do3rdPass = true;
+    public float f_3rdPassHeight = 50f;
+    public float f_3rdPassFloor = 20f;
+    public float f_3rdPassRange = 100f;
+
+    [Header("4th pass")]
+    public bool b_do4thPass = true;
+    public float f_4thPassHeight = 50f;
+    public float f_4thPassFloor = 20f;
+    public float f_4thPassRange = 100f;
+
+    float rand;
+    float f_chunkScaling;
+
+    float maxHeight = -20000f, minHeight = 20000f;
+    public GameObject TerrainPrefab;
+    [FormerlySerializedAs("RockPrefab")]
+    public GameObject SheepPrefab;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        f_chunkScaling = f_TargetTileSize / f_SourceTileSize;
+        mainCam = Camera.main;
+
+        this.transform.position = new Vector3(mainCam.transform.position.x, 0, mainCam.transform.position.z);
+
+        AllChunks = new Hashtable();
+        EdgeChunks = new HashSet<Chunk>();
+        RemoveEdgeChunks = new HashSet<Chunk>();
+        AddEdgeChunks = new HashSet<Chunk>();
+
+        rand = Random.Range(256f, 1000f);
+
+        StartingTerrainCheck();
+        StartCoroutine(TerrainCheckRoutine());
+    }
+
+    Chunk CreateTerrainChunk(int x, int z)
+    {
+        Vector3 position = new Vector3(x * f_TargetTileSize, 0f, z * f_TargetTileSize);
+
+        GameObject newTerrain;
+        Vector3 scaling = new Vector3(f_chunkScaling, 1f, f_chunkScaling);
+
+        newTerrain = GameObject.Instantiate(TerrainPrefab, this.transform);
+        newTerrain.transform.position = position;
+        newTerrain.transform.localScale = scaling;
+
+        SetLayersAndShifting(newTerrain, x, z, f_chunkScaling);
+
+        return CreateEdgeChunk(newTerrain, x, z);
+    }
+
+    protected Chunk CreateEdgeChunk(Object o, int x, int z)
+    {
+        if (AllChunks.ContainsKey(Chunk.HashFromCoords(x, z))) { return null; }
+
+        Vector3 position = new Vector3(x * f_TargetTileSize, 0f, z * f_TargetTileSize);
+
+        Chunk newChunk = new Chunk(o, x, z);
+        string chunkKey = newChunk.Hash();
+        AllChunks.Add(chunkKey, newChunk);
+        AddEdgeChunks.Add(newChunk);
+
+        return newChunk;
+    }
+
+    protected void AddChunkToEdge(int x, int z)
+    {
+        string hash = Chunk.HashFromCoords(x, z);
+        if (AllChunks.ContainsKey(hash))
+            AddEdgeChunks.Add((Chunk)AllChunks[hash]);
+    }
+
+    void StartingTerrainCheck()
+    {
+        Vector3 cameraPosition = mainCam.transform.position;
+        EdgeChunks.Add(CreateTerrainChunk((int)(cameraPosition.x / f_TargetTileSize), (int)(cameraPosition.z / f_TargetTileSize)));
+        bool thingsToDo = true;
+
+        while (thingsToDo)
+        {
+            thingsToDo = TerrainCheck(cameraPosition);
+        }
+    }
+
+    IEnumerator TerrainCheckRoutine()
+    {
+        Vector3 cameraPosition;
+
+        while (true)
+        {
+            cameraPosition = mainCam.transform.position;
+            TerrainCheck(cameraPosition);
+
+            yield return new WaitForSeconds(1f);
+        }
+    }
+
+    /// <summary>
+    /// Returns true if this successfully generates at least 1 new chunk
+    /// </summary>
+    /// <param name="cameraPosition"></param>
+    /// <returns></returns>
+    bool TerrainCheck(Vector3 cameraPosition)
+    {
+        bool ret = false;
+
+        foreach (Chunk iterChunk in EdgeChunks)
+        {
+            if (IsChunkInRange(iterChunk, cameraPosition, f_CreateRange))
+            {
+                //ShowChunk(iterChunk);
+                RemoveEdgeChunks.Add(iterChunk);
+
+                int x = iterChunk.x; int z = iterChunk.z;
+                // Check adjacent chunks to create more
+                CreateTerrainChunk(x - 1, z);
+                CreateTerrainChunk(x + 1, z);
+                CreateTerrainChunk(x, z - 1);
+                CreateTerrainChunk(x, z + 1);
+
+                ret = true;
+            }
+            else if (!IsChunkInRange(iterChunk, cameraPosition, f_DestroyRange))
+            {
+                DestroyChunk(iterChunk);
+                RemoveEdgeChunks.Add(iterChunk);
+
+                int x = iterChunk.x; int z = iterChunk.z;
+                // Check adjacent chunks to make them edge chunks
+                AddChunkToEdge(x - 1, z);
+                AddChunkToEdge(x + 1, z);
+                AddChunkToEdge(x, z - 1);
+                AddChunkToEdge(x, z + 1);
+            }
+        }
+
+        EdgeChunks.UnionWith(AddEdgeChunks);
+        EdgeChunks.ExceptWith(RemoveEdgeChunks);
+
+        AddEdgeChunks.Clear(); RemoveEdgeChunks.Clear();
+
+        return ret;
+    }
+
+    void SetLayersAndShifting(GameObject terrain, int xPosition, int zPosition, float scale)
+    {
+        Mesh mesh;
+        MeshCollider m_collider;
+
+        mesh = terrain.GetComponent<MeshFilter>().mesh;
+        Vector3[] verts = mesh.vertices;
+        float firstPass = 0f, secondPass = 0f, thirdPass = 0f, fourthPass = 0f;
+        for (int j = 0; j < verts.Length; j++)
+        {
+            if (b_do1stPass)
+                firstPass = f_1stPassHeight * DoPerlin(f_1stPassRange, xPosition, zPosition, verts[j].x, verts[j].z);
+
+            if (b_do2ndPass)
+            {
+                /*secondPass =
+                    f_2ndPassHeight * Mathf.PerlinNoise((xPosition + verts[j].x / f_SourceTileSize) * f_TargetTileSize / f_2ndPassRange,
+                    (zPosition + verts[j].z / f_SourceTileSize) * f_TargetTileSize / f_2ndPassRange);*/
+
+                secondPass = DoPerlin(f_2ndPassRange, xPosition, zPosition, verts[j].x, verts[j].z);
+
+                if (secondPass < f_2ndPassFloor)
+                    secondPass = 0f;
+                else
+                {
+                    secondPass = Mathf.SmoothStep(0f, 1f, (secondPass - f_2ndPassFloor) / (1.1f - f_2ndPassFloor));
+
+                    if (b_do3rdPass)
+                    {
+                        thirdPass = DoPerlin(f_3rdPassRange, xPosition, zPosition, verts[j].x, verts[j].z);
+
+                        if (thirdPass > f_3rdPassFloor)
+                        {
+                            thirdPass = Mathf.SmoothStep(0f, 1f, (thirdPass - f_3rdPassFloor) / (1.1f - f_3rdPassFloor));
+                            secondPass = Mathf.Lerp(secondPass, MathHelpers.MinusXSquaredCurve(secondPass), thirdPass);
+                        }
+                    }
+                    
+                    secondPass *= f_2ndPassHeight;
+                    //secondPass = Mathf.Pow(secondPass - f_2ndPassFloor, 3f) / Mathf.Pow(secondPass, 2) + secondPass;
+                }   
+            }
+
+            if (b_do4thPass)
+                fourthPass = f_4thPassHeight * DoPerlin(f_4thPassRange, xPosition, zPosition, verts[j].x, verts[j].z);
+
+            verts[j].y = firstPass + secondPass + fourthPass;
+
+            maxHeight = Mathf.Max(maxHeight, verts[j].y);
+            minHeight = Mathf.Min(minHeight, verts[j].y);
+        }
+
+        mesh.vertices = verts;
+        mesh.RecalculateBounds();
+        mesh.RecalculateNormals();
+
+        m_collider = terrain.GetComponent<MeshCollider>();
+        m_collider.sharedMesh = mesh;
+    }
+
+    /*void CreateRocksAndTrees(Chunk chunk, int numSheep)
+    {
+        if(SheepPrefab == null) return;
+
+        Vector3 position = Vector3.zero;
+        for (int i = 0; i < numSheep; i++)
+        {
+            position = GetRandomPointOnChunk(chunk);
+            GameObject newSheep = GameObject.Instantiate(SheepPrefab);
+            newSheep.transform.position = position;
+        }
+    }*/
+
+    void CreateRocksAndTrees(GameObject terrain, int xPosition, int zPosition, float scale)
+    {
+        if (SheepPrefab == null) return;
+
+        //will store info of successful ray cast
+        RaycastHit hitInfo;
+
+        //terrain should have mesh collider and be on custom terrain 
+        //layer so we don't hit other objects with our raycast
+        LayerMask layer = 1 << LayerMask.NameToLayer("Terrain");
+
+        Vector3 worldterrainDetect;
+        Vector3 worldterrainDir;
+
+        worldterrainDetect = terrain.transform.position + Vector3.up * 1000f;
+        worldterrainDir = Vector3.down;
+        if (Physics.Raycast(worldterrainDetect, worldterrainDir, out hitInfo, 5000f, layer))
+        {
+            Vector3 position = hitInfo.point;
+            GameObject newRock = GameObject.Instantiate(SheepPrefab);
+            newRock.transform.position = position;
+            //newRock.transform.localScale = new Vector3(15f,15f,15f);
+        }
+    }
+
+    /// <summary>
+    /// Returns a perlin value between 0 and 1 (can go below 0 sometimes)
+    /// </summary>
+    /// <param name="range"></param>
+    /// <param name="x"></param>
+    /// <param name="z"></param>
+    /// <param name="vertX"></param>
+    /// <param name="vertZ"></param>
+    /// <returns></returns>
+    float DoPerlin(float range, int x, int z, float vertX, float vertZ)
+    {
+        float perlReturn = Mathf.PerlinNoise(rand + ((x + vertX / f_SourceTileSize) * f_TargetTileSize / range),
+                rand + ((z + vertZ / f_SourceTileSize) * f_TargetTileSize / range));
+        return perlReturn;
+    }
+
+    public void RedrawTerrain()
+    {
+        foreach (DictionaryEntry entry in AllChunks)
+        {
+            Chunk iterChunk = (Chunk)entry.Value;
+            SetLayersAndShifting((GameObject)iterChunk.data, iterChunk.x, iterChunk.z, f_chunkScaling);
+        } 
+    }
+
+    
+}

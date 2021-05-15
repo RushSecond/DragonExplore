@@ -1,0 +1,92 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class ChunkManager : MonoBehaviour
+{
+    protected Camera mainCam;
+    protected Hashtable AllChunks;
+    protected HashSet<Chunk> EdgeChunks;
+    protected HashSet<Chunk> AddEdgeChunks;
+    protected HashSet<Chunk> RemoveEdgeChunks;
+
+    [Header("Global vars")]
+    [Tooltip("Camera distance to generate new chunks")]
+    public float f_CreateRange = 4000f;
+    public float f_DestroyRange = 4200f;
+
+    public float f_TargetTileSize = 100f;
+
+    protected class Chunk
+    {
+        public Object data;
+        public int x;
+        public int z;
+        // public bool shown;
+
+        public Chunk(Object e, int xpos, int zpos)
+        {
+            data = e; x = xpos; z = zpos;
+        }
+
+        public string Hash()
+        {
+            return HashFromCoords(x, z);
+        }
+
+        public static string HashFromCoords(int x, int z)
+        {
+            string ret = x.ToString() + "," + z.ToString();
+            return ret;
+        }
+    }
+
+    
+
+    protected Vector3 GetRandomPointOnChunk(Chunk chunk)
+    {
+        float randX = Random.value;
+        float randZ = Random.value;
+        GameObject terrain = (GameObject)chunk.data;
+        Vector3 returnPosition = terrain.transform.position;
+        returnPosition += new Vector3((randX + randZ / 2) * f_TargetTileSize, 0, randZ * f_TargetTileSize);
+
+        //will store info of successful ray cast
+        RaycastHit hitInfo;
+
+        //terrain should have mesh collider and be on custom terrain 
+        //layer so we don't hit other objects with our raycast
+        LayerMask layer = 1 << LayerMask.NameToLayer("Terrain");
+
+
+        Vector3 worldterrainDetect;
+        Vector3 worldterrainDir;
+
+        worldterrainDetect = returnPosition + Vector3.up * 1000f;
+        worldterrainDir = Vector3.down;
+        if (Physics.Raycast(worldterrainDetect, worldterrainDir, out hitInfo, 5000f, layer))
+        {
+            returnPosition = hitInfo.point;
+        }
+
+        return returnPosition;
+    }
+
+    protected bool IsChunkInRange(Chunk chunk, Vector3 cameraPosition, float distance)
+    {
+        float xPos = chunk.x * f_TargetTileSize;
+        float zPos = chunk.z * f_TargetTileSize;
+        Vector3 chunkPosition = new Vector3(xPos, cameraPosition.y, zPos);
+        float sqrDistance = Vector3.SqrMagnitude(chunkPosition - cameraPosition);
+
+        return (sqrDistance < distance * distance);
+    }
+
+    protected void DestroyChunk(Chunk chunk)
+    {
+        if (chunk == null) return;
+        AllChunks.Remove(chunk.Hash());
+        if (chunk.data != null)
+            GameObject.Destroy(chunk.data);
+    }
+}
