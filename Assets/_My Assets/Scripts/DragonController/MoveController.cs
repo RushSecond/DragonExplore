@@ -238,21 +238,11 @@ public class MoveController : MonoBehaviour
 
     void GetInput()
     {
-#if UNITY_STANDALONE || UNITY_WEBPLAYER
         // Check for jump
         if (Input.GetButtonDown("Jump"))
             MCglobals.b_jumpButtonDown = true;
 
         MCglobals.v2_inputAxes = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-#endif
-
-#if UNITY_EDITOR
-        // Check for jump
-        if (Input.GetButtonDown("Jump"))
-            MCglobals.b_jumpButtonDown = true;
-#endif
-        MCglobals.v2_inputAxes = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-
     }
 
     void ResetInput()
